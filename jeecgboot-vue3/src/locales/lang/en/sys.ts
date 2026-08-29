@@ -69,8 +69,8 @@ export default {
     signUpFormTitle: 'Sign up',
     forgetFormTitle: 'Reset password',
 
-    signInTitle: 'Sentiment-Plus',
-    signInDesc: 'Product review sentiment · Emotion / Keywords / Aspect insights',
+    signInTitle: 'PulseCart',
+    signInDesc: 'Product experience operations · review intake / human review / verification',
     policy: 'I agree to the xxx Privacy Policy',
     scanSign: `scanning the code to complete the login`,
 

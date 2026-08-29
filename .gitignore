@@ -205,6 +205,21 @@ cython_debug/
 # Temporary file for partial code execution
 tempCodeRunnerFile.py
 
+# PulseCart ships these as source, despite generic Python ignore names above.
+!jeecgboot-vue3/build/
+!jeecgboot-vue3/build/**
+!jeecgboot-vue3/src/design/var/
+!jeecgboot-vue3/src/design/var/**
+!jeecgboot-vue3/src/utils/lib/
+!jeecgboot-vue3/src/utils/lib/**
+
+# Local configuration, service state, imported data and model execution output.
+jeecgboot-vue3/.env
+jeecg-fastapi/runtime/
+sentiment-ai/runtime/
+sentiment-ai/data/imports/*
+!sentiment-ai/data/imports/.gitkeep
+
 # Ruff stuff:
 .ruff_cache/
 

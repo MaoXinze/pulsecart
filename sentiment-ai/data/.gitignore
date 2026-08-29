@@ -3,3 +3,5 @@ raw/*
 !raw/.gitkeep
 processed/*
 !processed/.gitkeep
+imports/*
+!imports/.gitkeep

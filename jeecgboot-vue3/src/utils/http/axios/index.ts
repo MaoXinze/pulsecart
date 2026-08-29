@@ -296,8 +296,8 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
           formatDate: true,
           // 异常消息提示类型
           errorMessageMode: 'message',
-          // 成功消息提示类型
-          successMessageMode: 'success',
+          // 成功反馈由页面在完成用户发起的操作后显式显示，避免初始化和并发请求堆叠 Toast。
+          successMessageMode: 'none',
           // 接口地址
           apiUrl: globSetting.apiUrl,
           // 接口拼接地址

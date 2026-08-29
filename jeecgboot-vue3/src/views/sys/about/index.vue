@@ -3,8 +3,8 @@
     <template #headerContent>
       <div class="flex justify-between items-center">
         <span class="flex-1">
-          <strong>Sentiment-Plus</strong>
-          是商品评论情感分析系统：支持单条评论情感分类、关键词提取与属性级情感洞察，并提供评价看板与优缺点 Top10 可视化。管理端基于 Vue3 + FastAPI，AI 推理由
+          <strong>PulseCart</strong>
+          是商品体验问题管理平台：支持评论导入与质量校验、人工审核、可追溯分析运行和问题卡处置验证。管理端基于 Vue3 + FastAPI，AI 推理由
           <code>sentiment-ai</code>
           独立服务提供。
         </span>

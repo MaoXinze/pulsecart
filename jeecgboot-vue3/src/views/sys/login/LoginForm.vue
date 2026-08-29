@@ -178,6 +178,10 @@
     getCodeInfo(randCodeData.checkKey).then((res) => {
       randCodeData.randCodeImage = res;
       randCodeData.requestCodeSuccess = true;
+    }).catch(() => {
+      // Keep the built-in placeholder visible until the local backend is available.
+      randCodeData.randCodeImage = '';
+      randCodeData.requestCodeSuccess = false;
     });
   }
 

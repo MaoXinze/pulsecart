@@ -181,7 +181,22 @@ export function createPermissionGuard(router: Router) {
     }
 
     // 构建后台菜单路由
-    const routes = await permissionStore.buildRoutesAction();
+    let routes: AppRouteRecordRaw[] | null;
+    try {
+      routes = await permissionStore.buildRoutesAction();
+    } catch (error) {
+      console.error('构建动态路由失败：', error);
+      next(false);
+      return;
+    }
+    if (routes === null) {
+      next({
+        path: LOGIN_PATH,
+        replace: true,
+        query: to.fullPath ? { redirect: to.fullPath } : undefined,
+      });
+      return;
+    }
     routes.forEach((route) => {
       router.addRoute(route as unknown as RouteRecordRaw);
     });

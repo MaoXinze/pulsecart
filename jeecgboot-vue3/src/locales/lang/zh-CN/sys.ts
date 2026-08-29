@@ -67,8 +67,8 @@ export default {
     signUpFormTitle: '注册',
     forgetFormTitle: '重置密码',
 
-    signInTitle: 'Sentiment-Plus',
-    signInDesc: '商品评论情感分析 · 情感 / 关键词 / 属性洞察',
+    signInTitle: 'PulseCart',
+    signInDesc: '商品体验问题闭环 · 评论导入 / 人工审核 / 处置验证',
     policy: '我同意敲敲云隐私政策',
     scanSign: `扫码后，即可完成登录`,
     scanSuccess: `扫码成功，登录中`,

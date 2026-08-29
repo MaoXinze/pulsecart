@@ -10,6 +10,13 @@ from app.models.entities import (
     SysUserDepart,
     SysUserRole,
 )
+from app.models.pulsecart import (
+    PcAnalysisRun,
+    PcDatasetImport,
+    PcIssue,
+    PcReview,
+    PcReviewTask,
+)
 
 __all__ = [
     "Base",
@@ -22,4 +29,9 @@ __all__ = [
     "SysUser",
     "SysUserDepart",
     "SysUserRole",
+    "PcAnalysisRun",
+    "PcDatasetImport",
+    "PcIssue",
+    "PcReview",
+    "PcReviewTask",
 ]

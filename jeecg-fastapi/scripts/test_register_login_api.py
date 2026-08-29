@@ -16,7 +16,7 @@ from app.core.security import AES_IV, AES_KEY, encrypt_password, verify_password
 from app.core.config import settings
 from sqlalchemy import create_engine, text
 
-BASE = "http://127.0.0.1:8000/jeecg-boot"
+BASE = "http://127.0.0.1:8006/jeecg-boot"
 
 
 def aes_encrypt(plain: str) -> str:

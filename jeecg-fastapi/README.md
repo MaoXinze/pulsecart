@@ -13,5 +13,5 @@ copy .env.example .env
 ..\.venv\Scripts\python run.py
 ```
 
-API：`http://localhost:8000/jeecg-boot`  
+API：`http://localhost:8006/jeecg-boot`
 默认账号：`admin` / `123456`

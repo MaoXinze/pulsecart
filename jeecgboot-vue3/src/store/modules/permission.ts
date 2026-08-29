@@ -122,8 +122,13 @@ export const usePermissionStore = defineStore({
       this.backMenuList = [];
       this.lastBuildMenuTime = 0;
     },
-    async changePermissionCode() {
+    async changePermissionCode(): Promise<AppRouteRecordRaw[] | null> {
       const systemPermission = await getBackMenuAndPerms();
+      if (!systemPermission || !Array.isArray(systemPermission.codeList) || !Array.isArray(systemPermission.menu)) {
+        this.setPermCodeList([]);
+        this.setAuthData({ auth: [], allAuth: [], sysSafeMode: false });
+        return null;
+      }
       const codeList = systemPermission.codeList;
       this.setPermCodeList(codeList);
       this.setAuthData(systemPermission);
@@ -132,7 +137,7 @@ export const usePermissionStore = defineStore({
       const routeList = systemPermission.menu;
       return routeList;
     },
-    async buildRoutesAction(): Promise<AppRouteRecordRaw[]> {
+    async buildRoutesAction(): Promise<AppRouteRecordRaw[] | null> {
       const { t } = useI18n();
       const userStore = useUserStore();
       const appStore = useAppStoreWithOut();
@@ -221,7 +226,11 @@ export const usePermissionStore = defineStore({
           // 这个函数可能只需要执行一次，并且实际的项目可以在正确的时间被放置
           let routeList: AppRouteRecordRaw[] = [];
           try {
-            routeList = await this.changePermissionCode();
+            const loadedRoutes = await this.changePermissionCode();
+            if (loadedRoutes === null) {
+              return null;
+            }
+            routeList = loadedRoutes;
             //routeList = (await getMenuList()) as AppRouteRecordRaw[];
             // let hasIndex: boolean = false;
             // let hasIcon: boolean = false;
@@ -258,6 +267,7 @@ export const usePermissionStore = defineStore({
             // }
           } catch (error) {
             console.error(error);
+            throw error;
           }
           // 组件地址前加斜杠处理  author: lsq date:2021-09-08
           routeList = addSlashToRouteComponent(routeList);
@@ -265,7 +275,7 @@ export const usePermissionStore = defineStore({
           routeList = transformObjToRoute(routeList);
 
           // 构建后台路由菜单
-          const backMenuList = transformRouteToMenu(routeList);
+          const backMenuList = transformRouteToMenu([...routeList, ...staticRoutesList]);
           this.setBackMenuList(backMenuList);
 
           // 删除meta.ignoreRoute项
@@ -283,9 +293,9 @@ export const usePermissionStore = defineStore({
       return routes;
     },
     setAuthData(systemPermission) {
-      this.authList = systemPermission.auth;
-      this.allAuthList = systemPermission.allAuth;
-      this.sysSafeMode = systemPermission.sysSafeMode;
+      this.authList = systemPermission.auth || [];
+      this.allAuthList = systemPermission.allAuth || [];
+      this.sysSafeMode = Boolean(systemPermission.sysSafeMode);
     },
     setAuthList(authList: AuthItem[]) {
       this.authList = authList;

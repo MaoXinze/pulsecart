@@ -1,0 +1,38 @@
+{
+  "aspect_counts": {
+    "after_sales_service": 123,
+    "app_and_connectivity": 85,
+    "battery_and_docking": 118,
+    "cleaning_effectiveness": 110,
+    "mopping": 110,
+    "navigation_obstacle_avoidance": 130,
+    "noise": 109,
+    "packaging_and_delivery": 104,
+    "reliability_and_failures": 118,
+    "setup_and_usability": 85,
+    "value_for_money": 108
+  },
+  "dataset_name": "净界智能扫地机器人合成评论演示集",
+  "files": {
+    "review_tasks.jsonl": "f8a6e3624e38ed4c349affb45724539f4ded3a99032cf642ed04393de39a5756",
+    "reviews.csv": "568b4376b92ff3b4d2d1b1f89295127f30ec1067d919de45f1693c6dc93524ac",
+    "synthetic_reference_labels.jsonl": "66e42f1e135ddaf22fb98b501baca4d9cbdf87a4e23c110045dd057669dc27c4"
+  },
+  "generator_version": "1.0.0",
+  "intended_use": "PulseCart 本地导入、审核队列、分析与界面演示",
+  "is_synthetic": true,
+  "prohibited_use": "不得用于宣称真实电商用户表现、线上模型效果或商业结论",
+  "review_count": 1200,
+  "review_task_count": 300,
+  "review_task_split": {
+    "risk_or_uncertainty": 150,
+    "stratified_random": 150
+  },
+  "scenario": "JC-S2-PRO 2.1.0 在 2026-07-01 后的负面导航避障信号上升，用于验证趋势与问题候选页面。",
+  "seed": 20260828,
+  "sentiment_counts": {
+    "negative": 344,
+    "neutral": 242,
+    "positive": 614
+  }
+}

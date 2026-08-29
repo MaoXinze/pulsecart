@@ -31,6 +31,26 @@ from app.services.third_oauth_providers import (
 router = APIRouter(tags=["第三方登录"])
 
 
+def _enabled_third_sources() -> list[str]:
+    """Expose only OAuth providers that have all credentials needed to finish login."""
+    configured = (
+        ("github", settings.github_client_id and settings.github_client_secret),
+        ("wechat_open", settings.wechat_open_client_id and settings.wechat_open_client_secret),
+        ("dingtalk", settings.dingtalk_client_id and settings.dingtalk_client_secret),
+        (
+            "wechat_enterprise",
+            settings.wechat_enterprise_corp_id and settings.wechat_enterprise_secret,
+        ),
+    )
+    return [source for source, is_configured in configured if is_configured]
+
+
+@router.get("/thirdLogin/config")
+def third_login_config():
+    """Let the login page degrade quietly when no external identity provider is configured."""
+    return Result.ok({"enabledSources": _enabled_third_sources()})
+
+
 def _callback_html(payload: Any) -> HTMLResponse:
     data = json.dumps(payload, ensure_ascii=False)
     html = f"""<!DOCTYPE html>

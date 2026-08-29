@@ -45,7 +45,7 @@ class Settings(BaseSettings):
     upload_max_mb: int = 10
 
     # 第三方登录（网站应用 OAuth，需在对应开放平台配置回调地址）
-    third_login_base_url: str = "http://localhost:8000/jeecg-boot"
+    third_login_base_url: str = "http://localhost:8006/jeecg-boot"
     frontend_url: str = "http://localhost:3100"
 
     wechat_open_client_id: str = ""
@@ -68,6 +68,7 @@ class Settings(BaseSettings):
     sentiment_ai_base_url: str = "http://127.0.0.1:8100"
     sentiment_ai_mock: bool = True
     sentiment_ai_timeout: float = 1.5
+    sentiment_ai_training_timeout: float = 8.0
 
 
 settings = Settings()

@@ -27,7 +27,7 @@ export default async ({ command, mode }: ConfigEnv): Promise<UserConfig> => {
   // The boolean type read by loadEnv is a string. This function can be converted to boolean type
   const viteEnv = wrapperEnv(env);
 
-  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY } = viteEnv;
+  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY, VITE_DEV_HOST } = viteEnv;
 
   const isBuild = command === 'build';
 
@@ -99,8 +99,8 @@ export default async ({ command, mode }: ConfigEnv): Promise<UserConfig> => {
       ],
     },
     server: {
-      // Listening on all local IPs
-      host: true,
+      // Keep local development off the LAN unless a host is explicitly configured.
+      host: VITE_DEV_HOST || '127.0.0.1',
       // @ts-ignore
       https: false,
       port: VITE_PORT,

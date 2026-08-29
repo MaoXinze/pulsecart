@@ -314,6 +314,8 @@
 
             <a-button block @click="goTo('/sentiment/dashboard')">评价看板</a-button>
 
+            <a-button block type="primary" @click="goTo('/pulsecart/operations')">商品体验问题闭环</a-button>
+
           </a-space>
 
         </a-card>

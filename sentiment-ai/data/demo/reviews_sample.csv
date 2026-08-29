@@ -1,0 +1,6 @@
+review_id,product_id,review_text,reviewed_at,category_id,channel,rating,product_version
+demo-001,SKU-1001,"物流很快，包装完好",2026-08-01,家居,自营,5,v2
+demo-002,SKU-1001,"安装说明不清楚，但客服回复很快",2026-08-02,家居,自营,3,v2
+demo-003,SKU-1002,"续航不错，外观也好看",2026-08-03,数码,平台,5,v1
+demo-004,SKU-1002,"用了两天就出现异味",2026-08-04,数码,平台,2,v1
+demo-005,SKU-1003,"发货及时，价格合理",2026-08-05,个护,自营,4,v3

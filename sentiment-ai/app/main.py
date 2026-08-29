@@ -1,13 +1,13 @@
-"""sentiment-ai 1.0 FastAPI 入口（好评/差评二分类，对接 1 号）。"""
+"""Standalone model service for the PulseCart product-experience platform."""
 
 from fastapi import FastAPI
 
 from app.api.routes import router
 
 app = FastAPI(
-    title="sentiment-ai-1.0",
-    version="1.0.0",
-    description="二分类情感：0=差评，1=好评。多标签见 sentiment-ai-2.0。",
+    title="PulseCart NLP Service",
+    version="2.0.0",
+    description="人工审核数据驱动的三分类模型注册、训练任务与批量推理服务。",
 )
 app.include_router(router)
 
@@ -15,9 +15,11 @@ app.include_router(router)
 @app.get("/")
 def root():
     return {
-        "service": "sentiment-ai",
-        "version": "1.0.0",
-        "mode": "binary_sentiment",
+        "service": "pulsecart-nlp",
+        "version": "2.0.0",
+        "mode": "reviewed_three_class_sentiment",
         "docs": "/docs",
-        "next": "sentiment-ai-2.0",
+        "health": "/healthz",
+        "models": "/api/v1/models",
+        "legacy_binary_bert": "/api/sentiment/predict",
     }
